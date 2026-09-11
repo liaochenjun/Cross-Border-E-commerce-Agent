@@ -18,7 +18,7 @@ Agent 自动完成：
 
 ## 当前阶段：V0.1 — Information Agent
 
-当前重点：Search / Playwright / Crawl4AI（网页转 Markdown 的 MCP 封装见 `.claude/mcp-servers/crawl4ai-mcp/`）。
+当前重点：Search / Playwright / Crawl4AI（网页转 Markdown 的 MCP 封装见 `.claude/mcp-servers/crawl4ai-mcp/`，安装与依赖说明见该目录 `README.md`）。
 
 > 上表链路中的其余环节（供应商、成本、上架、订单、物流、客服、分析等）均为设计目标，**尚未实现**。
 
@@ -32,11 +32,29 @@ Agent 自动完成：
 - 商业基础：Medusa 作为 Commerce Core 候选（计划）
 - 销售渠道、物流、客服、营销：后续逐步增加
 
+## 目录结构
+
+```text
+.claude/
+├── skills/                          供 Claude Code 加载的项目知识
+│   ├── architecture.md                  系统架构设计（主文档）
+│   ├── cross-border-capability-map/     36 个业务模块开源能力地图
+│   ├── ecomm-kb/                        原跨境电商知识库的蒸馏知识
+│   └── reuse-oss/                       「优先复用开源」工作流 + 评估清单
+└── mcp-servers/
+    └── crawl4ai-mcp/                网页转 Markdown 的 MCP server
+
+0基础小白跨界电商知识库.md            原知识库全文（存档）
+README.md
+LICENSE
+```
+
 ## 架构与设计资产
 
 - `.claude/skills/architecture.md` — 系统架构设计（主 Agent + 业务 Agent + MCP/Adapter + Commerce Core + 事件驱动 + 人工审批边界）
 - `.claude/skills/cross-border-capability-map/` — 36 个业务模块开源能力地图（2026-09 GitHub API 实测，A/B/C/D 分级）
 - `.claude/skills/reuse-oss/` — 「优先复用开源」工作流与候选项目评估清单
+- `.claude/skills/ecomm-kb/` — 原「跨境电商知识库」的蒸馏知识（业务背景参照，非本仓库产物）
 
 架构最高原则：**Agent 是大脑，MCP 是接口，Adapter 是翻译层，Business Core 是业务执行系统，Database 是事实来源，Event 是触发机制，Human Approval 是风险边界。**
 
@@ -50,4 +68,6 @@ Agent 自动完成：
 
 ## 许可与来源
 
-`.claude/skills/reuse-oss/references/` 评估清单拷贝自 [mcpserver-finder](https://github.com/ModelContextProtocol-Security/mcpserver-finder)，保持其 Apache-2.0 许可（见该目录 `SOURCE.md`）。
+本仓库内容整体采用 **CC BY-NC-SA 4.0**（署名 — 非商业性使用 — 相同方式共享），全文见 [`LICENSE`](LICENSE)：转载须署名，禁止打包售卖或用于付费培训，衍生作品须以相同协议发布。
+
+例外：`.claude/skills/reuse-oss/references/` 评估清单拷贝自 [mcpserver-finder](https://github.com/ModelContextProtocol-Security/mcpserver-finder)，保持其 **Apache-2.0** 许可（见该目录 `SOURCE.md`）。

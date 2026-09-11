@@ -1,0 +1,9 @@
+# crawl4ai-mcp 依赖
+#
+# 注意 mcp 的版本下限:server.py 用的是 mcp.server.MCPServer,
+# 这个类在 MCP Python SDK v2 里由 v1 的 FastMCP 改名而来。
+# 装到 mcp 1.x 会在 import 阶段直接失败,不要降到 v1。
+mcp>=2.0,<3.0
+
+# 网页抓取与 HTML→Markdown 清洗
+crawl4ai>=0.9

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "crawl4ai": {
+      "type": "stdio",
+      "command": "python",
+      "args": [
+        ".claude/mcp-servers/crawl4ai-mcp/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}
