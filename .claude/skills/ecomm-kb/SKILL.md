@@ -1,11 +1,16 @@
 ---
 name: ecomm-kb
-description: 跨境电商知识库仓库 (ecomm) 的蒸馏知识。当需要在本仓库新增/整理模块文档、维护 clash/config.yaml 或 ax6000.md、回答本项目结构/网络环境/贡献与版权规范相关问题,或了解路由器透明代理与 Clash 配置模板时使用。
+description: 原「跨境电商知识库」仓库 (zeeler/ecomm) 的蒸馏知识,在本仓库中仅作业务背景参照。当需要跨境电商业务领域知识(平台/合规/物流/选品/营销的模块划分)、原知识库的贡献与版权规范,或了解路由器透明代理与 Clash 配置模板时使用。注意:clash/config.yaml 与 ax6000.md 这两个文件不在本仓库,在 zeeler/ecomm。
 ---
 
 # 跨境电商知识库 · 项目蒸馏
 
-> 本 skill 是仓库核心知识的蒸馏版,供后续会话快速进入上下文。细节仍以仓库原文件为准。
+> ⚠️ **适用范围**:本 skill 描述的是**原「跨境电商知识库」仓库 (zeeler/ecomm)**,不是当前仓库。
+> 当前仓库是跨境电商 **AI Agent** 项目(另起炉灶,不继承原知识库的 Git 历史),网络环境文档明确不在其范围内。
+> 本 skill 在此只作为**业务背景参照**——需要理解跨境电商业态与模块划分时查它;需要改本仓库结构时,看根目录 `README.md`。
+> 文中提到的 `README.md`、`ax6000.md`、`clash/config.yaml` 均指 **zeeler/ecomm** 中的文件。
+
+> 本 skill 是原仓库核心知识的蒸馏版,供后续会话快速进入上下文。细节仍以仓库原文件为准。
 
 ## 1. 项目定位与规范
 
@@ -16,13 +21,13 @@ description: 跨境电商知识库仓库 (ecomm) 的蒸馏知识。当需要在�
 
 ## 2. 实际文件 vs 规划结构
 
-README 规划了 00-09 十个模块目录,但**目前尚未创建**。仓库实际文件只有:
+原仓库 README 规划了 00-09 十个模块目录,但**尚未创建**。原仓库实际文件只有:
 
 - `README.md` — 总导航、模块规划、贡献与免责声明
 - `ax6000.md` — Redmi AX6000 路由器 + ShellCrash 环境笔记
 - `clash/config.yaml` — 路由端 Clash 配置模板
 
-规划模块(新增内容时按此编号组织):
+规划模块(在原仓库新增内容时按此编号组织):
 
 | 目录 | 主题 | 要点 |
 |---|---|---|
@@ -37,7 +42,7 @@ README 规划了 00-09 十个模块目录,但**目前尚未创建**。仓库实�
 | `08-RiskManagement` | 风控 | 账号申诉(POA 撰写)、赶跟卖、恶意差评应对 |
 | `09-Management` | 组织管理 | 团队架构、KPI/OKR、客服 SOP |
 
-## 3. 网络环境 (ax6000.md 蒸馏)
+## 3. 网络环境 (zeeler/ecomm 的 `ax6000.md` 蒸馏)
 
 - **设备**:Redmi AX6000 — MTK Filogic 830 四核 2GHz、512MB RAM、160MHz 频宽、8 数据流、8 路信号放大器;4 个自适应千兆口,支持 LAN 聚合与 Mesh。
 - **SSH**:固件 1.0.67 下可行,步骤见 right.com.cn 论坛 thread-8253125;OpenWrt 端公钥放 `/etc/dropbear/authorized_keys`。
@@ -47,9 +52,9 @@ README 规划了 00-09 十个模块目录,但**目前尚未创建**。仓库实�
   sh -c "$(curl -kfsSl https://fastly.jsdelivr.net/gh/juewuy/ShellCrash@master/install.sh)" && source /etc/profile &> /dev/null
   ```
 
-  关键选项:稳定版;安装到 `/data`;局域网透明代理(启用);软固化选 0(已固化);安装源切 **Cloudflare_CDN**(快);防火墙改**混合模式**;用 providers 方式生成配置(模板选"极简",或直接用本仓库 `clash/config.yaml`);启用**域名嗅探**;Dashboard 装 **Yacd-Meta** 到 `/data/ShellCrash/ui`,访问 `http://192.168.12.1:9999/ui`。
+  关键选项:稳定版;安装到 `/data`;局域网透明代理(启用);软固化选 0(已固化);安装源切 **Cloudflare_CDN**(快);防火墙改**混合模式**;用 providers 方式生成配置(模板选"极简",或直接用原仓库的 `clash/config.yaml`);启用**域名嗅探**;Dashboard 装 **Yacd-Meta** 到 `/data/ShellCrash/ui`,访问 `http://192.168.12.1:9999/ui`。
 
-## 4. Clash 配置模板要点 (clash/config.yaml)
+## 4. Clash 配置模板要点 (zeeler/ecomm 的 `clash/config.yaml`)
 
 - **端口**:`mixed-port: 7890`、`redir-port: 7892`、`tproxy-port: 7893`、`external-controller: :9999`。
 - **DNS**:fake-ip 模式(`198.18.0.1/16`),监听 `:1053`;default-nameserver 用 114.114.114.114 / 223.5.5.5;nameserver/fallback 用 DoH(阿里 223.5.5.5、doh.pub、rubyfish tls);fake-ip-filter 覆盖国内音乐/游戏/CDN/NTP 等大量域名,保证国内流量不被 fake-ip 污染。
@@ -57,3 +62,5 @@ README 规划了 00-09 十个模块目录,但**目前尚未创建**。仓库实�
 - **规则**:静态规则只有三条(`LAN → DIRECT`、`GEOIP CN → Direct`、`MATCH → Final`),实际分流靠 `script:` 里的 `main(ctx, metadata)`:QUIC UDP 443 先 REJECT → 非常见端口 DIRECT → 按规则集优先级匹配(Special/流媒体/Telegram/OpenAI 等)→ GeoIP CN → Others。
 - **rule-providers**:全部走 dler-io/Rules 仓库,经 `gl.bbkss.org` 反代,如 `https://gl.bbkss.org/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/{名称}.yaml`;媒体类在 `Provider/Media/` 子目录,含 Netflix/YouTube/Disney Plus/Bilibili/腾讯视频/优酷 等。
 - ⚠️ `tun`/`experimental` 段(utun、en0)是旧 Mac 配置残留,路由器上实际走 tproxy 模式,改配置时不要照搬这两段。
+
+> 注:该配置的 `mixed-port` 是 **7890**。本机实际在用的 Clash 混合端口是 **7897**(git 走代理时用这个),两者不是同一份配置,不要混淆。
